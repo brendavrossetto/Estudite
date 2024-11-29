@@ -3,34 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Modelo; // Substitua 'Modelo' pelo nome do seu Model relacionado ao banco de dados.
+use App\Models\Cadastro;
 
 class CadastroController extends Controller
 {
+    // Método para armazenar os dados no banco de dados
     public function store(Request $request)
     {
-        // Validações dos campos enviados
+        // Validação dos dados
         $request->validate([
             'nome' => 'required|string|max:255',
-            'idade' => 'required|integer|min:0|max:120',
-            'imagem' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Valida o upload de imagem (opcional)
+            'idade' => 'required|integer|min:18', // Exemplo de validação para idade
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validação da imagem
         ]);
 
-        // Faz o upload da imagem, se enviada
-        $caminhoImagem = null;
-        if ($request->hasFile('imagem')) {
-            $caminhoImagem = $request->file('imagem')->store('imagens', 'public'); // Salva em 'storage/app/public/imagens'
+        // Processando o upload da imagem
+        if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+            // Salvando a imagem no diretório public/imagens
+            $caminhoImagem = $request->imagem->store('imagens', 'public');
+        } else {
+            $caminhoImagem = null; // Se não houver imagem, define como nulo
         }
 
-        // Salva os dados no banco de dados
-        Cadastros::create([
+        // Criando um novo cadastro no banco de dados
+        Cadastro::create([
             'nome' => $request->nome,
             'idade' => $request->idade,
             'imagem' => $caminhoImagem,
         ]);
 
-        // Redireciona com mensagem de sucesso
-        return redirect()->route('alguma.rota') // Substitua pela rota para onde deseja redirecionar
-            ->with('sucesso', 'Cadastro realizado com sucesso!');
+        // Redirecionar ou retornar com sucesso
+        return redirect()->route('cadastro.index')->with('success', 'Cadastro realizado com sucesso!');
     }
 }

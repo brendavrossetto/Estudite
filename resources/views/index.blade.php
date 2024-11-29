@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Admin Template</title>
-    <meta name="author" content="David Grzyb">
+    <title>Estudite</title>
     <meta name="description" content="">
 
     <!-- Tailwind -->
@@ -12,10 +11,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
-        .bg-sidebar { background: #3d68ff; }
-        .cta-btn { color: #3d68ff; }
-        .upgrade-btn { background: #1947ee; }
-        .upgrade-btn:hover { background: #0038fd; }
+        .bg-sidebar { background: #001e8a; }
+        .cta-btn { color: hsla(244, 100%, 23%, 0.669); }
         .active-nav-link { background: #1947ee; }
         .nav-item:hover { background: #1947ee; }
         .account-link:hover { background: #3d68ff; }
@@ -25,7 +22,7 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
-            <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Estudite</a>
             <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> Nova matéria
             </button>

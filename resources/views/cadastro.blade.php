@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('titulo', 'Cadastrar')
+@section('titulo', 'Cadastro')
 
 @section('conteudo')
 <p>Preencha o formulario: </p>
