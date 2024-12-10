@@ -6,23 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
-{
-    Schema::create('usuarios', function (Blueprint $table) {
-        $table->id(); // ID único
-        $table->string('nome'); // Nome do usuário
-        $table->string('senha'); // Senha (hash)
-        $table->timestamps(); // created_at e updated_at
-    });
-}
-
-
-    /**
-     * Reverse the migrations.
-     */
+    
+    public function up(): void
+    {
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 255);
+            $table->string('email', 255);
+            $table->string('username', 255);
+            $table->string('password', 255);
+            $table->boolean('admin')->default(0);
+            $table->timestamps();
+           
+            });
+    }
+    
+    
     public function down(): void
     {
         Schema::dropIfExists('usuarios');
