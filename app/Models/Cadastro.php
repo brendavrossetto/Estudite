@@ -9,8 +9,9 @@ class Cadastro extends Model
 {
     use HasFactory;
 
-    
-    protected $fillable = ['nome', 
-    'idade', 
-    'imagem'];
+    protected $fillable = [
+        'nome',
+        'idade',
+        'imagem',
+    ];
 }

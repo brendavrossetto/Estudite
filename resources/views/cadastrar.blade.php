@@ -1,40 +1,39 @@
 @extends('base')
 
-@section('titulo', 'Cadastrar')
+@section('titulo', 'Cadastrar Usuário')
 
 @section('conteudo')
-<p>Preencha o formulario: </p>
+    <h2>Cadastrar Novo Usuário</h2>
 
-@if($errors->any())
-<div>
-    <h2>deu ruim</h2>
-    @foreach($errors->all() as $erro)
-    <p>{{$erro}}</p>
-    @endforeach
-</div>
-@endif 
+    @if($errors->any())
+        <div>
+            <h3>Erro no preenchimento:</h3>
+            <ul>
+                @foreach($errors->all() as $erro)
+                    <li>{{ $erro }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-<form method="post" action="{{ route ('usuarios.gravar') }}">
-    @csrf
-    <input type="text" name="name"
-    placeholder="Nome" value="{{ old('name')}}">
-    <br>
-    <input type="text" name="email"
-    placeholder="Email" value="{{ old('email')}}">
-    <br>
-    <input type="text" name="username"
-    placeholder="User" value="{{ old('username')}}">
-    <br>
-    <input type="text" name="password"
-    placeholder="Senha" value="{{ old('password')}}">
-    <br>
-    <select name="admin"> 
-    <option value="null">Selecione o admin</option>
-    <option value="1">yess</option>
-    <option value="0">noo</option>
-    </select>
-    <br>
-    <input type="submit" name="Gravar">
-</form>
+    @if(session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+    @endif
 
+    <form method="POST" action="{{ route('usuarios.gravar') }}" enctype="multipart/form-data">
+        @csrf
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ old('nome') }}" placeholder="Digite o nome" required>
+        <br>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" value="{{ old('idade') }}" placeholder="Digite sua idade" required>
+        <br>
+
+        <label for="imagem">Foto de Perfil:</label>
+        <input type="file" id="imagem" name="imagem" accept="image/*">
+        <br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
 @endsection
