@@ -16,8 +16,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
-        .bg-sidebar { background: #7272e9; }
-        .cta-btn { color: #0129b8; }
+        .bg-sidebar { background: #0000be; }
+        .cta-btn { color: rgb(86, 122, 250); }
         .upgrade-btn { background: #1947ee; }
         .upgrade-btn:hover { background: #0038fd; }
         .active-nav-link { background: #1947ee; }
@@ -40,12 +40,12 @@
                 <i class="fas fa-home mr-3"></i>
                 Inicial
             </a>
-            <a href="{{route('animais')}}" class="flex items-center text-white py-4 pl-6 nav-item 
-            @if (Request::is ('animais*')) active-nav-link 
+            <a href="{{route('materias')}}" class="flex items-center text-white py-4 pl-6 nav-item 
+            @if (Request::is ('materias*')) active-nav-link 
             @else opacity-75 hover:opacity-100
             @endif">
                 <i class="fas fa-paw mr-3"></i>
-                Animais
+                Materias
             </a>
             @if (Auth::user() && Auth::user() ['admin'])
             <a href="{{('usuarios')}}" class="flex items-center text-white  py-4 pl-6 nav-item 
@@ -57,10 +57,6 @@
             </a>
             @endif
         </nav>
-        <a href="#" class="absolute w-full upgrade-btn bottom-0  text-white flex items-center justify-center py-4">
-            <i class="fas fa-arrow-circle-up mr-3"></i>
-            Upgrade to Pro!
-        </a>
     </aside>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
@@ -73,7 +69,7 @@
                     @if (Auth::user())
                     {{Auth::user()['name']}}
                     @else 
-                    Voce nao ta autentics
+                    Voce não está autenticado
                     @endif
                 </span>
 
