@@ -13,12 +13,17 @@ return new class extends Migration
 {
     Schema::create('materias', function (Blueprint $table) {
         $table->id();
-        $table->string('titulo');
-        $table->text('conteudo');
-        $table->string('categoria')->nullable();  // Categoria opcional
-        $table->string('tags')->nullable();       // Tags para facilitar a pesquisa
+        $table->string('nome');
+        $table->text('nota');
+      
+     
         $table->timestamps();
     });
+}
+
+public function down(): void
+{
+    Schema::dropIfExists('animais');
 }
 
 };
