@@ -8,17 +8,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class MateriasController extends Controller
+class MateriaController extends Controller
 {
     public function index()  
-    {
-        $dados = Materia::get();
-        $materiassPorNota = Materia::groupBy('nota')
-        ->selectRaw('nota, count(*) as quantidade')
-        ->get();
-        return view('materias.index', [
-            'materias' => $dados,
-        ]);
+    { 
+                // Recupera todas as matérias do banco de dados
+                $materias = Materia::all();
+        
+                // Opcional: agrupar matérias por nota
+                $materiasPorNota = Materia::groupBy('nota')
+                    ->selectRaw('nota, count(*) as quantidade')
+                    ->get();
+        
+                // Retorna a view com os dados
+                return view('materias.index', [
+                    'materias' => $materias,
+                    'materiasPorNota' => $materiasPorNota,
+                ]);
     }
 
     public function cadastrar(){
@@ -28,12 +34,11 @@ class MateriasController extends Controller
     public function gravar(Request $form){
         dd($form);
         $dados = $form->validate([
-            'nome'=> 'required',
-            'nota' => 'required|integer',
+            'titulo'=> 'required',
+
         ]);
         
         
-        Mail::to('alguem@batata.com')->send(new MateriaCadastrado);
 
 
     }
@@ -47,8 +52,7 @@ class MateriasController extends Controller
        public function editarGravar(Request $form, Materia $materias)
         {
         $dados = $form->validate([
-        'nome' => 'required|max:255',
-        'descricao' => 'required'
+        'titulo' => 'required|max:255',
         ]);
 
         

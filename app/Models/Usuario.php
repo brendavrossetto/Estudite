@@ -8,18 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class Usuario extends Model implements Authenticatable
+class Usuario extends Model 
 {
     use HasFactory;
 
 
-    protected $table = 'usuarios';
+    protected $table = 'users';
 
     protected $fillable = [
         'id',
         'name',
         'email',
-        'username',
         'password',
         'admin'
     ];

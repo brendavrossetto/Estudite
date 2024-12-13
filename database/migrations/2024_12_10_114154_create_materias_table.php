@@ -13,8 +13,11 @@ return new class extends Migration
 {
     Schema::create('materias', function (Blueprint $table) {
         $table->id();
-        $table->string('nome');
-        $table->text('nota');
+        $table->string('titulo');
+        $table->text('categoria');
+        $table->text('conteudo');
+        $table->text('tags');
+        $table->integer('nota');
       
      
         $table->timestamps();
@@ -23,7 +26,7 @@ return new class extends Migration
 
 public function down(): void
 {
-    Schema::dropIfExists('animais');
+    Schema::dropIfExists('materias');
 }
 
 };

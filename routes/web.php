@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,21 +10,21 @@ Route::get('/', function () {
 
 Route::get('/login', [UsuariosController::class, 'login']);
 
-Route::get('/materias', [MateriasController::class, 'index'])->name('materias');;
+Route::get('/materias', [MateriaController::class, 'index'])->name('materias');;
 //qnd acessar a rota via get anamisas ele vai pegar  a função classe controler e executar o index, rota index dos nimais se chama anmiais
 
 Route::get('/materias/cadastrar',
-[MateriasController::class, 'cadastrar'])->name
+[MateriaController::class, 'cadastrar'])->name
 ('materias.cadastrar');
 //nome da rota p criar o link, vai p CADASTRAT
 
 Route::post('/materias.cadastrar',
-[MateriasController::class, 'gravar'])->name
+[MateriaController::class, 'gravar'])->name
 ('materias.gravar');
 //VAI PRO GRAVAR (QUE AINDA NN EXISTE)
 
 Route::get('/materias/apagar/{materia}', 
-[MateriasController::class,'apagar']) -> name('materias.apagar');
+[MateriaController::class,'apagar']) -> name('materias.apagar');
 
 ////////////////////////////////////////////////////////////////////
 

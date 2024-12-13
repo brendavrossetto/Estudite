@@ -61,7 +61,7 @@ class UsuariosController extends Controller
     public function login(Request $form){
         if ($form->isMethod('POST')) {
             $credenciais = $form->validate([
-                'username' => 'required',
+                'name' => 'required',
                 'password' => 'required',
             ]);
 

@@ -9,14 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Materia extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    //use SoftDeletes;
 
    protected $table = 'materias'; 
 
    protected $fillable =[
        'id',
        'nome',
-        'nota',
         
    ];
 };

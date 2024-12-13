@@ -5,14 +5,7 @@
 
 
 
-@if($errors->any())
-<div>
-<h4>preencha o form plsss</h4>
-@foreach($errors->all() as $erro)
-<p>{{ $error }}</p>
-@endforeach
-</div>
-@endif
+
 
 <form method="post" action="{{route('login')}}" class="p=10 bg-white rounded shadow-xl" >
 @csrf
