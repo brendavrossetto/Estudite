@@ -21,6 +21,9 @@
     <input type="text" name="nome" 
     placeholder="Nome" value="{{ old('nome')}}" >
     <br>
+    <input type="number" name="nome" 
+    placeholder="Nota" value="{{ old('nota')}}" >
+    <br>
     <input type="submit" name="Gravar">
 </form>
 
