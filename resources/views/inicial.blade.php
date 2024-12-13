@@ -3,5 +3,5 @@
 @section('titulo', 'Pagina Inicial ')
 
 @section('conteudo')
-<p>seja bem vindo blavblabls</p>
+<p>seja bem vindo </p>
 @endsection

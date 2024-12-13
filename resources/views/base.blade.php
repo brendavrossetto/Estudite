@@ -44,7 +44,7 @@
             @if (Request::is ('materias*')) active-nav-link 
             @else opacity-75 hover:opacity-100
             @endif">
-                <i class="fas fa-paw mr-3"></i>
+            <i class="fas fa-book-open mr-3"></i>
                 Materias
             </a>
             @if (Auth::user() && Auth::user() ['admin'])
